@@ -1,4 +1,33 @@
 {
   "trips": [],
-  "countries": {}
+  "countries": [
+    {
+      "name": "Serbia",
+      "id": 1
+    },
+    {
+      "name": "Macedonia",
+      "id": 2
+    },
+    {
+      "name": "Montenegro",
+      "id": 3
+    },
+    {
+      "name": "BiH",
+      "id": 4
+    },
+    {
+      "name": "Croatia",
+      "id": 5
+    },
+    {
+      "name": "Bulgaria",
+      "id": 6
+    },
+    {
+      "name": "Greece",
+      "id": 7
+    }
+  ]
 }
