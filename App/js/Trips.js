@@ -15,7 +15,7 @@ class Trips {
   }
 
   getContries() {
-    fetch(this.Api, {
+    fetch(this.Api.countries, {
       method: "GET",
     })
       .then((res) => res.json())
@@ -30,7 +30,7 @@ class Trips {
   }
 
   addTrip(obj) {
-    fetch(this.Api, {
+    fetch(this.Api.trips, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
