@@ -1,4 +1,4 @@
-class Trip {
+export default class Trip {
   constructor(title, url, price, description, fromDate, toDate, country) {
     this.title = title;
     this.imageUrl = url;
