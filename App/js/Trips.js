@@ -14,7 +14,7 @@ class Trips {
     this.Api = api;
   }
 
-  getContries() {
+  getContries(elem) {
     fetch(this.Api.countries, {
       method: "GET",
     })
@@ -26,7 +26,18 @@ class Trips {
           regExCountries.push(elem.name);
         });
         this.#regex.country = RegExp(`^(${regExCountries.join("|")})+$`);
+        this.insertCountries(elem);
       });
+  }
+
+  insertCountries(elem) {
+    const createElem = (el) => document.createElement(el);
+    this.#countries.forEach((country) => {
+      const opt = createElem("option");
+      opt.textContent = country.name;
+      opt.id = country.id;
+      elem.appendChild(opt);
+    });
   }
 
   addTrip(obj) {
@@ -51,3 +62,5 @@ class Trips {
       });
   }
 }
+
+export default Trips;
