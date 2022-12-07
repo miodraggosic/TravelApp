@@ -1,0 +1,22 @@
+.addTrip {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.addTrip label {
+  display: block;
+  width: 50%;
+}
+.addTrip input {
+  width: 50%;
+}
+
+.green {
+  border: 2px solid #567d49;
+}
+
+.red {
+  border: 2px solid #9e3838;
+}
