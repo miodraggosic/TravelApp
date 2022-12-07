@@ -4,7 +4,9 @@ class Trips {
     imageUrl:
       /^(http(s)?)(\:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/,
     price: /^\d{2,4}$/,
-    description: /^[A-Z][\w\s\-_,\.;:()]{30,250}$/,
+    description: /^[A-Z][a-z]+[\s\w\W]+$/,
+    fromDate: /^(?:2023)+/,
+    toDate: /^(?:2023)+/,
     country: null,
   };
 
@@ -40,6 +42,17 @@ class Trips {
     });
   }
 
+  validField(field) {
+    let result = this.#regex[field.id].test(field.value);
+    if (result) {
+      field.classList.remove("red");
+      field.classList.add("green");
+    } else {
+      field.classList.add("red");
+      field.value = "";
+    }
+  }
+
   addTrip(obj) {
     fetch(this.Api.trips, {
       method: "POST",
@@ -48,7 +61,7 @@ class Trips {
       },
       body: JSON.stringify(obj),
     })
-      .then(() => this.renderTrips())
+      .then(() => console.log("succes")) //this.renderTrips())
       .catch((err) => console.log(err));
   }
 
