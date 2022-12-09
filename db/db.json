@@ -59,6 +59,36 @@
       "toDate": "2023-06-05",
       "country": "Serbia",
       "id": 6
+    },
+    {
+      "title": "Maglic Mountain Adventure",
+      "imageUrl": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/8e/6c/1e/maglic-mountain.jpg?w=1100&h=-1&s=1",
+      "price": "400",
+      "description": "Located as it is in the Sutjeska National Park, which also contains one of Europe‘s last primeval forests, a journey to Maglic Mountain is simply glorious. This part of the world recieves few visitors, making it a perfect retreat for hikers and mountaineers, and the natural triangle of Zelengora, Volujak and Maglic Mountain is both challenging and captivating. \n\nAt 2386m, Maglic Mountain is the highest peak in Bosnia & Herzegovina and features gentle pine-forest walking, dramatic rock faces, arduous climbs over rocky sections and scrambling. The view from the ridge and peak is stupendous, across the dramatic landscape of the Bosnia & Herzegovina–Montenegro border. The forest here hides a world of wonder, with trickling streams, huge trees – some older than 400 years – and rich flora and fauna. Keep an eye out for animal footprints. Europe’s elusive brown bear might be watching",
+      "fromDate": "2023-07-03",
+      "toDate": "2023-07-07",
+      "country": "BiH",
+      "id": 7
+    },
+    {
+      "title": "The highest Peak of Mount Korab",
+      "imageUrl": "https://www.datocms-assets.com/55179/1647367915-korab.jpg?fit=clip&fm=avif&h=700&w=800",
+      "price": "370",
+      "description": "The West of Macedonia, its mountain ranges and the breathtaking landscapes will make you live the best mountaineering experience of your life. These are the highest summits in North Macedonia and some of the best natural areas to explore. Apart from its beautiful landscapes, they are full of history and show a rich culture that will surprise you. Mount Korab, with Korab peak (2764 m), the highest peak of North Macedonia and Albania",
+      "fromDate": "2023-07-24",
+      "toDate": "2023-07-29",
+      "country": "Macedonia",
+      "id": 8
+    },
+    {
+      "title": "Hiking in the Dinaric Alps",
+      "imageUrl": "https://www.datocms-assets.com/55179/1647363397-unnamed-file-458.jpg?fit=clip&fm=avif&h=700&w=800",
+      "price": "460",
+      "description": "Croatia is very famous as a seaside tourist destination, but so far it’s not enough famous for its mountain areas. This trip is an opportunity to explore its huge potential and natural beauty.\nI propose to guide you around the most important areas of the Dinaric Alps. This is a mountain chain that goes along several countries; in Croatia, it extends for more than 600 kilometers along the coast of the Adriatic Sea. Some of the places where I would like to take you for a hike are Northern Istra, Gorski Kotar, Velebit and Lika. In fact, those are the places that I know best and where I’ve spent most of my hiking experience.",
+      "fromDate": "2023-04-12",
+      "toDate": "2023-04-18",
+      "country": "Croatia",
+      "id": 9
     }
   ],
   "countries": [
