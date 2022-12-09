@@ -15,8 +15,10 @@
 
 .green {
   border: 2px solid #567d49;
+  outline: #567d49;
 }
 
 .red {
   border: 2px solid #9e3838;
+  outline: #9e3838;
 }
