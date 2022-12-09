@@ -44,12 +44,12 @@ class Trips {
 
   validField(field) {
     let result = this.#regex[field.id].test(field.value);
-    if (result) {
-      field.classList.remove("red");
-      field.classList.add("green");
-    } else {
+    if (!result) {
       field.classList.add("red");
-      field.value = "";
+      field.classList.remove("green");
+    } else {
+      field.classList.add("green");
+      field.classList.remove("red");
     }
   }
 
