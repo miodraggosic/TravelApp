@@ -65,13 +65,15 @@ class Trips {
       .catch((err) => console.log(err));
   }
 
-  renderTrips() {
-    fetch(this.Api, {
+  renderTrips(elem, func) {
+    fetch(this.Api.trips, {
       method: "GET",
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        data.forEach((trip) => {
+          elem.appendChild(func(trip));
+        });
       });
   }
 }
