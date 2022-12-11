@@ -62,4 +62,14 @@ section {
 }
 .displayTrips {
   flex-grow: 3;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.card {
+  background-color: var(--white);
+}
+
+.card img {
+  width: 300px;
+  height: 200px;
 }
