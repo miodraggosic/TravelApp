@@ -1,4 +1,4 @@
-import Trips from "./Trips.js";
+import Trips from "./components/Trips.js";
 import Api from "./env.js";
 
 const urlParams = new URLSearchParams(window.location.search);
