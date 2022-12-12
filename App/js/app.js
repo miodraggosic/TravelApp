@@ -51,11 +51,11 @@ function tripCard(obj) {
   const img = createElem("img");
   img.src = obj.imageUrl;
 
-  const dateFrom = createElem("span");
-  dateFrom.textContent = obj.dateFrom; //revert m and year
+  const fromDate = createElem("span");
+  fromDate.textContent = obj.fromDate; //revert m and year
 
-  const dateTo = createElem("span");
-  dateTo.textContent = obj.dateTo;
+  const toDate = createElem("span");
+  toDate.textContent = obj.toDate;
 
   const description = createElem("h6");
   description.textContent = obj.description;
@@ -68,8 +68,8 @@ function tripCard(obj) {
     title,
     country,
     img,
-    dateFrom,
-    dateTo,
+    fromDate,
+    toDate,
     description,
     readMore,
     price
@@ -87,9 +87,8 @@ function fullTripCard(trip) {
 
   const imgWrapper = createElem("div");
   imgWrapper.classList.add("imgWrapper");
-
-  const img = createElem("img");
-  img.src = trip.imageUrl;
+  console.log(imgWrapper);
+  imgWrapper.style.backgroundImage = `url("${trip.imageUrl}")`;
 
   const textWrapper = createElem("div");
   textWrapper.classList.add("textWrapper");
@@ -100,11 +99,11 @@ function fullTripCard(trip) {
   const title = createElem("h1");
   title.textContent = trip.title;
 
-  const dateFrom = createElem("span");
-  dateFrom.textContent = trip.dateFrom; //revert m and year
+  const fromDate = createElem("span");
+  fromDate.textContent = trip.fromDate; //revert m and year
 
-  const dateTo = createElem("span");
-  dateTo.textContent = trip.dateTo;
+  const toDate = createElem("span");
+  toDate.textContent = trip.toDate;
 
   const description = createElem("h4");
   description.textContent = trip.description;
@@ -112,8 +111,7 @@ function fullTripCard(trip) {
   const price = createElem("h3");
   price.textContent = trip.price;
 
-  imgWrapper.appendChild(img);
-  textWrapper.append(country, title, dateFrom, dateTo, description, price);
+  textWrapper.append(country, title, fromDate, toDate, description, price);
 
   divCard.append(imgWrapper, textWrapper);
 
