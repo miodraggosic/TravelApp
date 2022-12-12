@@ -10,6 +10,8 @@ class Trips {
     country: null,
   };
 
+  allTrips = [];
+
   #countries = [];
 
   constructor(api) {
@@ -30,6 +32,25 @@ class Trips {
         this.#regex.country = RegExp(`^(${regExCountries.join("|")})+$`);
         this.insertCountries(elem);
       });
+  }
+
+  getTrips(id, elem, func) {
+    !id
+      ? fetch(this.Api.trips, {
+          method: "GET",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            data.forEach((trip) => {
+              this.allTrips.push(trip);
+              this.renderTrip(elem, func, trip);
+            });
+          })
+      : fetch(`${this.Api.trips}/${id}`, {
+          method: "GET",
+        })
+          .then((res) => res.json())
+          .then((trip) => this.renderTrip(elem, func, trip));
   }
 
   insertCountries(elem) {
@@ -65,21 +86,24 @@ class Trips {
       .catch((err) => console.log(err));
   }
 
-  renderTrips(elem, func) {
-    fetch(this.Api.trips, {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        for (let index = 0; index < 4; index++) {
-          const trip = data[index];
-          elem.appendChild(func(trip));
-        }
-        // data.forEach((trip) => {
-        //   elem.appendChild(func(trip));
-        // });
-      });
+  renderTrip(elem, func, obj) {
+    elem.appendChild(func(obj));
   }
+
+  // fetch(this.Api.trips, {
+  //   method: "GET",
+  // })
+  //   .then((res) => res.json())
+  //   .then((data) => {
+
+  //     // for (let index = 0; index < 4; index++) {
+  //     //   const trip = data[index];
+  //     //   elem.appendChild(func(trip));
+  //     // }
+  //     // data.forEach((trip) => {
+  //     //   elem.appendChild(func(trip));
+  //     // });
+  //   });
 }
 
 export default Trips;
