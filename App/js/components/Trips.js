@@ -89,21 +89,6 @@ class Trips {
   renderTrip(elem, func, obj) {
     elem.appendChild(func(obj));
   }
-
-  // fetch(this.Api.trips, {
-  //   method: "GET",
-  // })
-  //   .then((res) => res.json())
-  //   .then((data) => {
-
-  //     // for (let index = 0; index < 4; index++) {
-  //     //   const trip = data[index];
-  //     //   elem.appendChild(func(trip));
-  //     // }
-  //     // data.forEach((trip) => {
-  //     //   elem.appendChild(func(trip));
-  //     // });
-  //   });
 }
 
 export default Trips;
