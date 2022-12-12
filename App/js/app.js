@@ -35,6 +35,11 @@ function createLink(obj) {
   return aTag;
 }
 
+function reverseDate(date) {
+  const dateReversed = date.split("-").reverse().join("-");
+  return dateReversed;
+}
+
 //all trips
 
 function tripCard(obj) {
@@ -52,10 +57,10 @@ function tripCard(obj) {
   img.src = obj.imageUrl;
 
   const fromDate = createElem("span");
-  fromDate.textContent = obj.fromDate; //revert m and year
+  fromDate.textContent = reverseDate(obj.fromDate); //revert m and year
 
   const toDate = createElem("span");
-  toDate.textContent = obj.toDate;
+  toDate.textContent = reverseDate(obj.toDate);
 
   const description = createElem("h6");
   description.textContent = obj.description;
@@ -80,8 +85,6 @@ function tripCard(obj) {
 //single trip
 
 function fullTripCard(trip) {
-  //implement check path if true render single trip
-
   const divCard = createElem("div");
   divCard.classList.add("fullCard");
 
@@ -100,10 +103,10 @@ function fullTripCard(trip) {
   title.textContent = trip.title;
 
   const fromDate = createElem("span");
-  fromDate.textContent = trip.fromDate; //revert m and year
+  fromDate.textContent = reverseDate(trip.fromDate); //revert m and year
 
   const toDate = createElem("span");
-  toDate.textContent = trip.toDate;
+  toDate.textContent = reverseDate(trip.toDate);
 
   const description = createElem("h4");
   description.textContent = trip.description;
