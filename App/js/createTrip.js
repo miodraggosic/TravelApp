@@ -1,5 +1,5 @@
-import Trips from "./Trips.js";
-import Trip from "./Trip.js";
+import Trips from "./components/Trips.js";
+import Trip from "./components/Trip.js";
 import Api from "./env.js";
 
 const form = document.querySelector(".addTrip");
