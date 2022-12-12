@@ -18,9 +18,12 @@ body {
 }
 main {
   display: grid;
-  height: 100vh;
+
   grid-template-rows: auto 1fr;
   align-items: center;
+}
+.fullHeight {
+  height: 100vh;
 }
 header {
   display: flex;
@@ -52,7 +55,6 @@ nav {
 }
 
 section {
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -72,4 +74,42 @@ section {
 .card img {
   width: 300px;
   height: 200px;
+}
+
+/* trip overview */
+
+.fullTrip {
+  margin: 0 auto;
+  margin-top: 10vh;
+  background-color: var(--gray);
+  width: 96%;
+}
+
+.fullCard {
+  display: flex;
+  padding: 1rem;
+  height: 70vh;
+}
+.imgWrapper,
+.textWrapper {
+  width: 50%;
+}
+
+.imgWrapper {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.textWrapper {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 4%;
+}
+
+.textWrapper > h4 {
+  text-align: justify;
 }
