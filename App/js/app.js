@@ -1,11 +1,18 @@
 import Trips from "./Trips.js";
 import Api from "./env.js";
 
+const urlParams = new URLSearchParams(window.location.search);
+const id = urlParams.get("id");
 const navLinks = document.querySelector(".navLinks");
-const displayTrips = document.querySelector(".displayTrips");
-console.log(displayTrips);
+
+const trips = new Trips(Api);
+
+//helper func
+
+const createElem = (el) => document.createElement(el);
 
 //nav links
+
 const links = [
   { name: "Home", path: "../index.html" },
   { name: "Admin", path: "../pages/admin.html" },
@@ -20,11 +27,6 @@ function renderLinks(elem, arr) {
   }
 }
 
-const trips = new Trips(Api);
-
-//helper func
-const createElem = (el) => document.createElement(el);
-
 function createLink(obj) {
   const aTag = createElem("a");
   aTag.textContent = obj.name;
@@ -33,12 +35,15 @@ function createLink(obj) {
   return aTag;
 }
 
+//all trips
+
 function tripCard(obj) {
   const div = createElem("div");
   div.classList.add("card");
 
-  const title = createElem("h3");
+  const title = createElem("a");
   title.textContent = obj.title;
+  title.href = `./pages/tripOverview.html?id=${obj.id}`;
 
   const country = createElem("h4");
   country.textContent = obj.country;
@@ -72,5 +77,57 @@ function tripCard(obj) {
   return div;
 }
 
+//single trip
+
+function fullTripCard(trip) {
+  //implement check path if true render single trip
+
+  const divCard = createElem("div");
+  divCard.classList.add("fullCard");
+
+  const imgWrapper = createElem("div");
+  imgWrapper.classList.add("imgWrapper");
+
+  const img = createElem("img");
+  img.src = trip.imageUrl;
+
+  const textWrapper = createElem("div");
+  textWrapper.classList.add("textWrapper");
+
+  const country = createElem("h3");
+  country.textContent = trip.country;
+
+  const title = createElem("h1");
+  title.textContent = trip.title;
+
+  const dateFrom = createElem("span");
+  dateFrom.textContent = trip.dateFrom; //revert m and year
+
+  const dateTo = createElem("span");
+  dateTo.textContent = trip.dateTo;
+
+  const description = createElem("h4");
+  description.textContent = trip.description;
+
+  const price = createElem("h3");
+  price.textContent = trip.price;
+
+  imgWrapper.appendChild(img);
+  textWrapper.append(country, title, dateFrom, dateTo, description, price);
+
+  divCard.append(imgWrapper, textWrapper);
+
+  return divCard;
+}
+
 renderLinks(navLinks, links);
-trips.renderTrips(displayTrips, tripCard);
+
+if (!id) {
+  const displayTrips = document.querySelector(".displayTrips");
+  console.log(displayTrips);
+
+  trips.getTrips(id, displayTrips, tripCard);
+} else {
+  const fullTrip = document.querySelector(".fullTrip");
+  trips.getTrips(id, fullTrip, fullTripCard);
+}
