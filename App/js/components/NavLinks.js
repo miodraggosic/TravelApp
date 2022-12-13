@@ -1,3 +1,5 @@
+import { createElem } from "../helperFunc.js";
+
 class NavLinks {
   constructor() {
     this.links = [
@@ -22,3 +24,5 @@ class NavLinks {
     }
   }
 }
+
+export default NavLinks;
