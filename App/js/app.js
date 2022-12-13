@@ -103,7 +103,7 @@ function fullTripCard(trip) {
   title.textContent = trip.title;
 
   const fromDate = createElem("span");
-  fromDate.textContent = reverseDate(trip.fromDate); //revert m and year
+  fromDate.textContent = reverseDate(trip.fromDate);
 
   const toDate = createElem("span");
   toDate.textContent = reverseDate(trip.toDate);
