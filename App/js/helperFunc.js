@@ -52,7 +52,6 @@ function fullTripCard(obj) {
 
   const imgWrapper = createElem("div");
   imgWrapper.classList.add("imgWrapper");
-  console.log(imgWrapper);
   imgWrapper.style.backgroundImage = `url("${obj.imageUrl}")`;
 
   const textWrapper = createElem("div");
@@ -82,3 +81,5 @@ function fullTripCard(obj) {
 
   return divCard;
 }
+
+export { createElem, tripCard, fullTripCard };
