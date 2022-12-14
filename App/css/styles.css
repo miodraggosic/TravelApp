@@ -18,7 +18,6 @@ body {
 }
 main {
   display: grid;
-
   grid-template-rows: auto 1fr;
   align-items: center;
 }
@@ -59,11 +58,11 @@ section {
   flex-direction: column;
   align-items: center;
 }
-.search {
+/* .search {
   flex-grow: 1;
-}
+} */
 .displayTrips {
-  flex-grow: 3;
+  /* flex-grow: 3; */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 }
