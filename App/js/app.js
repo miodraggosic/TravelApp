@@ -125,9 +125,26 @@ renderLinks(navLinks, links);
 
 if (!id) {
   const displayTrips = document.querySelector(".displayTrips");
-  console.log(displayTrips);
-
+  const searchValue = document.querySelector("#searchTrips");
   trips.getTrips(id, displayTrips, tripCard);
+
+  searchValue.addEventListener("change", function (e) {
+    const searchTerm = e.target.value.toLowerCase().split(" ");
+    console.log(searchTerm);
+    // if (searchTerm !== "") {
+    displayTrips.innerHTML = "";
+    let resultAll = [];
+    searchTerm.forEach((term) => {
+      console.log(term);
+      trips.allTrips.filter((trip) => {
+        trip.title.toLowerCase().includes(term) ? resultAll.push(trip) : false;
+      });
+      //implement only uniq index render
+      resultAll.forEach((trip) =>
+        trips.renderTrip(displayTrips, tripCard, trip)
+      );
+    });
+  });
 } else {
   const fullTrip = document.querySelector(".fullTrip");
   trips.getTrips(id, fullTrip, fullTripCard);
