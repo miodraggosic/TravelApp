@@ -34,7 +34,7 @@ class Trips {
       });
   }
 
-  getTrips(id, elem, func) {
+  getTrips(id, elem, card) {
     !id
       ? fetch(this.Api.trips, {
           method: "GET",
@@ -43,14 +43,15 @@ class Trips {
           .then((data) => {
             data.forEach((trip) => {
               this.allTrips.push(trip);
-              this.renderTrip(elem, func, trip);
+              this.renderTrip(elem, card, trip);
             });
+            this.addReadMore();
           })
       : fetch(`${this.Api.trips}/${id}`, {
           method: "GET",
         })
           .then((res) => res.json())
-          .then((trip) => this.renderTrip(elem, func, trip));
+          .then((trip) => this.renderTrip(elem, card, trip));
   }
 
   insertCountries(elem) {
@@ -86,8 +87,27 @@ class Trips {
       .catch((err) => console.log(err));
   }
 
-  renderTrip(elem, func, obj) {
-    elem.appendChild(func(obj));
+  renderTrip(elem, card, obj) {
+    elem.appendChild(card(obj));
+    return this;
+  }
+
+  addReadMore() {
+    const readMoreBts = document.querySelectorAll(".readMore");
+    console.log(readMoreBts);
+    readMoreBts.forEach((btn) =>
+      btn.addEventListener("click", (e) => {
+        console.log(e);
+        console.log(e.target.previousElementSibling.childNodes);
+
+        function toggleVisible() {
+          e.target.previousElementSibling.childNodes.forEach((elem) =>
+            elem.classList.toggle("active")
+          );
+        }
+        toggleVisible();
+      })
+    );
   }
 }
 
