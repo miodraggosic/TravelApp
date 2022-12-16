@@ -31,6 +31,7 @@ function tripCard(obj) {
 
   const readMore = createElem("button");
   const price = createElem("h3");
+  price.classList.add("price");
   price.textContent = obj.price;
 
   divCard.append(
@@ -82,4 +83,4 @@ function fullTripCard(obj) {
   return divCard;
 }
 
-export { createElem, tripCard, fullTripCard };
+export { createElem, reverseDate, tripCard, fullTripCard };
