@@ -50,34 +50,49 @@ function tripCard(obj) {
   title.textContent = obj.title;
   title.href = `./pages/tripOverview.html?id=${obj.id}`;
 
-  const country = createElem("h4");
-  country.textContent = obj.country;
+  const imgLink = createElem("a");
+  imgLink.classList.add("imgLink");
+  imgLink.style.backgroundImage = `url("${obj.imageUrl}")`;
+  imgLink.href = `./pages/tripOverview.html?id=${obj.id}`;
 
-  const img = createElem("img");
-  img.src = obj.imageUrl;
+  const descriptionWrapper = createElem("div");
+  const shortDescrp = createElem("p");
+  shortDescrp.classList.add("shortDescrp", "active");
+  shortDescrp.textContent = obj.description.substring(0, 30).concat(" ...");
+  console.log(shortDescrp.textContent);
+  const fullDescrp = createElem("p");
+  fullDescrp.classList.add("fullDescrp");
+  console.log(fullDescrp);
+  fullDescrp.textContent = obj.description;
+
+  descriptionWrapper.append(shortDescrp, fullDescrp);
+
+  const readMore = createElem("button");
+  readMore.classList.add("readMore");
+  readMore.textContent = "Read more";
+
+  const price = createElem("h3");
+  price.classList.add("price");
+  price.textContent = obj.price;
 
   const fromDate = createElem("span");
-  fromDate.textContent = reverseDate(obj.fromDate); //revert m and year
+  fromDate.textContent = reverseDate(obj.fromDate);
 
   const toDate = createElem("span");
   toDate.textContent = reverseDate(obj.toDate);
 
-  const description = createElem("h6");
-  description.textContent = obj.description;
-
-  const readMore = createElem("button");
-  const price = createElem("h3");
-  price.textContent = obj.price;
+  const country = createElem("h4");
+  country.textContent = obj.country;
 
   div.append(
     title,
-    country,
-    img,
+    imgLink,
+    descriptionWrapper,
+    readMore,
+    price,
     fromDate,
     toDate,
-    description,
-    readMore,
-    price
+    country
   );
   return div;
 }
@@ -112,6 +127,7 @@ function fullTripCard(trip) {
   description.textContent = trip.description;
 
   const price = createElem("h3");
+  price.classList.add("price");
   price.textContent = trip.price;
 
   textWrapper.append(country, title, fromDate, toDate, description, price);
@@ -126,24 +142,21 @@ renderLinks(navLinks, links);
 if (!id) {
   const displayTrips = document.querySelector(".displayTrips");
   const searchValue = document.querySelector("#searchTrips");
+
   trips.getTrips(id, displayTrips, tripCard);
 
   searchValue.addEventListener("change", function (e) {
-    const searchTerm = e.target.value.toLowerCase().split(" ");
+    const searchTerm = e.target.value.toLowerCase().trim();
     console.log(searchTerm);
     // if (searchTerm !== "") {
     displayTrips.innerHTML = "";
-    let resultAll = [];
-    searchTerm.forEach((term) => {
-      console.log(term);
-      trips.allTrips.filter((trip) => {
-        trip.title.toLowerCase().includes(term) ? resultAll.push(trip) : false;
-      });
-      //implement only uniq index render
-      resultAll.forEach((trip) =>
-        trips.renderTrip(displayTrips, tripCard, trip)
-      );
+
+    trips.allTrips.filter((trip) => {
+      trip.title.toLowerCase().includes(searchTerm)
+        ? trips.renderTrip(displayTrips, tripCard, trip)
+        : false;
     });
+    trips.addReadMore();
   });
 } else {
   const fullTrip = document.querySelector(".fullTrip");
