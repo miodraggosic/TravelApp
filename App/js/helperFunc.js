@@ -83,4 +83,27 @@ function fullTripCard(obj) {
   return divCard;
 }
 
-export { createElem, reverseDate, tripCard, fullTripCard };
+function errorMessage(elem, msg) {
+  displayTrips.style.display = "none";
+  const message = document.createElement("div");
+  message.classList.add("message");
+  message.textContent = msg;
+  elem.append(message);
+}
+
+function removeMessage() {
+  setTimeout(() => {
+    const message = document.querySelector(".message");
+    message.remove();
+    displayTrips.style.display = "grid";
+  }, 3000);
+}
+
+export {
+  createElem,
+  reverseDate,
+  tripCard,
+  fullTripCard,
+  errorMessage,
+  removeMessage,
+};
