@@ -201,16 +201,6 @@ if (!id) {
 
     //   trips.addReadMore();
     // }
-    function search(term) {
-      if (term) {
-        let tripsToRender = trips.allTrips.filter((trip) =>
-          trip.title.toLowerCase().includes(term)
-        );
-        return tripsToRender;
-      } else {
-        return [];
-      }
-    }
   });
 } else {
   const fullTrip = document.querySelector(".fullTrip");
