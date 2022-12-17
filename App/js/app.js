@@ -141,22 +141,76 @@ renderLinks(navLinks, links);
 
 if (!id) {
   const displayTrips = document.querySelector(".displayTrips");
-  const searchValue = document.querySelector("#searchTrips");
+  const section = document.querySelector("section");
+  const searchField = document.querySelector("#searchTrips");
 
   trips.getTrips(id, displayTrips, tripCard);
 
-  searchValue.addEventListener("change", function (e) {
-    const searchTerm = e.target.value.toLowerCase().trim();
-    console.log(searchTerm);
-    // if (searchTerm !== "") {
-    displayTrips.innerHTML = "";
+  function errorMessage(elem, msg) {
+    displayTrips.style.display = "none";
+    const message = document.createElement("div");
+    message.classList.add("message");
+    message.textContent = msg;
+    elem.append(message);
+  }
+  function removeMessage() {
+    setTimeout(() => {
+      const message = document.querySelector(".message");
+      message.remove();
+      displayTrips.style.display = "grid";
+    }, 3000);
+  }
 
-    trips.allTrips.filter((trip) => {
-      trip.title.toLowerCase().includes(searchTerm)
-        ? trips.renderTrip(displayTrips, tripCard, trip)
-        : false;
-    });
-    trips.addReadMore();
+  searchField.addEventListener("focus", function (e) {
+    displayTrips.classList.add("blur");
+  });
+
+  searchField.addEventListener("blur", (e) => {
+    const searchTerm = e.target.value.toLowerCase().trim();
+    const tripsToRender = trips.filterTrips(searchTerm);
+    displayTrips.classList.remove("blur");
+    // trips.allTrips.filter(
+    //   (trip) => trip.title.toLowerCase().includes(searchTerm)
+    // ? trips.renderTrip(displayTrips, tripCard, trip)
+    // : false;
+    // );
+    // search(searchTerm);
+    console.log(tripsToRender);
+
+    if (tripsToRender.length > 0) {
+      displayTrips.innerHTML = "";
+      tripsToRender.forEach((trip) =>
+        trips.renderTrip(displayTrips, tripCard, trip)
+      );
+      trips.addReadMore();
+    } else {
+      errorMessage(
+        section,
+        "Desired destination is not available at the moment"
+      );
+      removeMessage();
+    }
+    // if (searchTerm !== "" && searchTerm !== null) {
+    //   displayTrips.classList.remove("blur");
+    //   displayTrips.innerHTML = "";
+    //   trips.allTrips.filter((trip) => {
+    //     trip.title.toLowerCase().includes(searchTerm)
+    //       ? trips.renderTrip(displayTrips, tripCard, trip)
+    //       : false;
+    //   });
+
+    //   trips.addReadMore();
+    // }
+    function search(term) {
+      if (term) {
+        let tripsToRender = trips.allTrips.filter((trip) =>
+          trip.title.toLowerCase().includes(term)
+        );
+        return tripsToRender;
+      } else {
+        return [];
+      }
+    }
   });
 } else {
   const fullTrip = document.querySelector(".fullTrip");
