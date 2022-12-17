@@ -89,25 +89,29 @@ class Trips {
 
   renderTrip(elem, card, obj) {
     elem.appendChild(card(obj));
-    return this;
   }
 
   addReadMore() {
     const readMoreBts = document.querySelectorAll(".readMore");
-    console.log(readMoreBts);
-    readMoreBts.forEach((btn) =>
-      btn.addEventListener("click", (e) => {
-        console.log(e);
-        console.log(e.target.previousElementSibling.childNodes);
+    function toggleVisible(e) {
+      e.target.previousElementSibling.childNodes.forEach((elem) =>
+        elem.classList.toggle("active")
+      );
+    }
+    readMoreBts.forEach((btn) => {
+      btn.addEventListener("click", (e) => toggleVisible(e));
+    });
+  }
 
-        function toggleVisible() {
-          e.target.previousElementSibling.childNodes.forEach((elem) =>
-            elem.classList.toggle("active")
-          );
-        }
-        toggleVisible();
-      })
-    );
+  filterTrips(term) {
+    if (term) {
+      const tripsToRender = this.allTrips.filter((trip) =>
+        trip.title.toLowerCase().includes(term)
+      );
+      return tripsToRender;
+    } else {
+      return [];
+    }
   }
 }
 
