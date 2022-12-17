@@ -12,7 +12,7 @@
 }
 body {
   background-image: url(../assets/images/curvy-narrow-muddy-road-dark-forest-surrounded-by-greenery-little-light-coming-from2x.png);
-  background-size: cover;
+
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -56,18 +56,43 @@ nav {
 section {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
+  padding: 0 2%;
 }
 .search {
   align-self: center;
+  width: 50%;
+  padding: 5%;
+}
+#searchTrips {
+  width: 100%;
+  font-size: 1.4vw;
+}
+.message {
+  text-align: center;
+  flex-grow: 1;
+  height: 50vh;
+  color: aliceblue;
+  font-size: 2.6vw;
 }
 .displayTrips {
   /* flex-grow: 3; */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 4% 2%;
+}
+.displayTrips a {
+  text-decoration: none;
+}
+.blur {
+  opacity: 0.2;
 }
 .card {
+  display: flex;
   background-color: var(--white);
+  flex-direction: column;
+  text-align: center;
+  border-radius: 6px;
 }
 .price::after {
   content: " \20AC";
