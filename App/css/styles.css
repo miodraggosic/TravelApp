@@ -6,9 +6,9 @@
 }
 
 :root {
-  --white: #d5d2cf;
-  --gray: #e0e0e0;
-  --black: #160f09;
+  --white: #fffdfb;
+  --gray: #9c9797;
+  --black: #464646;
 }
 body {
   background-image: url(../assets/images/curvy-narrow-muddy-road-dark-forest-surrounded-by-greenery-little-light-coming-from2x.png);
@@ -21,26 +21,42 @@ main {
   grid-template-rows: auto 1fr;
   align-items: center;
 }
+main h1 {
+  text-align: center;
+  color: var(--white);
+  font-size: 3.2vw;
+  letter-spacing: 0.2vw;
+  padding: 3%;
+}
 .fullHeight {
   height: 100vh;
 }
 header {
   display: flex;
   justify-content: space-between;
-  padding: 1vh 1vw;
-  color: var(--gray);
+  padding: 1vh 2vw;
+  color: var(--white);
   font-size: 2vw;
 }
 nav {
   display: flex;
   flex-direction: row;
-  gap: 1.2vw;
+  gap: 3.2vw;
+  font-size: 1.4vw;
+  align-items: center;
 }
 .navLink {
   display: inline-block;
   text-decoration: none;
-  color: var(--gray);
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--white);
   gap: 1vw;
+}
+.navLink:hover {
+  transition-duration: 1s;
+  transform: scale(1.2);
+  color: rgb(75, 164, 252);
 }
 
 .banner {
@@ -52,25 +68,38 @@ nav {
   font-size: 5vw;
   text-align: center;
 }
+.arrowWrapper {
+  text-align: center;
+}
+.arrow {
+  background-image: url(../assets/icons/arrows-down.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: none;
+  width: 10vw;
+  height: 10vh;
+  cursor: pointer;
+}
 
 section {
-  display: flex;
-  flex-direction: column;
   padding: 0 2%;
 }
 .search {
-  align-self: center;
   width: 50%;
+  margin: 0 auto;
   padding: 5%;
 }
 #searchTrips {
   width: 100%;
   font-size: 1.4vw;
+  text-align: center;
 }
 .message {
   text-align: center;
   flex-grow: 1;
-  height: 50vh;
+  height: 80vh;
   color: aliceblue;
   font-size: 2.6vw;
 }
@@ -79,13 +108,17 @@ section {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  gap: 4% 2%;
+  gap: 2%;
+  color: var(--black);
 }
 .displayTrips a {
   text-decoration: none;
 }
 .blur {
-  opacity: 0.2;
+  opacity: 0.3;
+}
+.displayNone {
+  display: none;
 }
 .card {
   display: flex;
@@ -94,8 +127,15 @@ section {
   text-align: center;
   border-radius: 6px;
 }
-.price::after {
-  content: " \20AC";
+.card a {
+  font-weight: 600;
+  padding: 1vw 0;
+  color: var(--black);
+}
+.card a:hover {
+  transition-duration: 1s;
+  transform: scale(1.2);
+  color: rgb(75, 164, 252);
 }
 .imgLink {
   display: block;
@@ -104,12 +144,32 @@ section {
   background-position: center;
   height: 25vh;
 }
+.descriptionWrapper {
+  padding: 1vw 0;
+}
+.readMore {
+  border: none;
+  cursor: pointer;
+}
+
+.card span {
+  display: inline-block;
+  padding: 0.5vw 5px;
+}
+.price::after {
+  content: " \20AC";
+}
 
 .shortDescrp {
   display: none;
 }
 .fullDescrp {
   display: none;
+}
+
+.country {
+  padding: 1vw 0;
+  font-weight: 600;
 }
 .active {
   display: block;
@@ -120,11 +180,12 @@ section {
 .fullTrip {
   margin: 0 auto;
   margin-top: 10vh;
-  background-color: var(--gray);
+  background-color: var(--white);
   width: 96%;
 }
 
 .fullCard {
+  background-color: var(--white);
   display: flex;
   padding: 1rem;
   height: 70vh;
@@ -132,6 +193,42 @@ section {
 .imgWrapper,
 .textWrapper {
   width: 50%;
+  color: var(--black);
+}
+.textWrapper {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: flex-end;
+  color: #464646;
+}
+.textWrapper h1 {
+  color: var(--black);
+  font-size: 2.8vw;
+  font-weight: 800;
+  text-align: end;
+  text-transform: uppercase;
+  padding-right: 0;
+}
+.textWrapper h3 {
+  color: var(--black);
+  font-size: 2.6vw;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.dateWrapper {
+  align-self: center;
+  text-align: right;
+  padding: 1vh;
+  width: 100%;
+}
+.dateWrapper span {
+  display: inline-block;
+  padding: 0 1rem;
+  font-size: 1.4vw;
 }
 
 .imgWrapper {
@@ -139,25 +236,54 @@ section {
   background-size: cover;
   background-position: center;
 }
-.textWrapper {
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: flex-end;
-  gap: 4%;
-}
 
 .textWrapper > h4 {
-  text-align: justify;
+  text-align: center;
+  font-size: 1.4vw;
+  font-weight: 300;
+}
+
+.priceCard {
+  margin-top: 1.6vh;
+  padding: 2% 4%;
+  background-color: #ff7846;
+}
+
+.priceCard::after {
+  content: " \20AC";
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  text-align: right;
+  width: 100%;
+  color: var(--white);
+  padding: 1vh 1vw;
 }
 
 /* admin page */
 
+.tableWrapper {
+  width: 90%;
+  margin: 1rem auto;
+}
+
 table {
   width: 100%;
   color: white;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 8px 0;
+  border-bottom: var(--gray) 1px solid;
+  font-size: 1.2vw;
+}
+tr {
+  padding: 8px 0;
 }
 
 .tdImage {
@@ -165,4 +291,45 @@ table {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+}
+.editBtn {
+  width: 50%;
+  height: 3vh;
+  background-image: url(../assets/icons/edit.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+#createTrip {
+  width: 32%;
+  padding: 1vh;
+  font-size: 1.6vw;
+  margin: 2rem auto;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* animations */
+
+.pulsate {
+  animation-duration: 1s;
+  animation-name: pulsate;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+/* .hover {
+} */
+
+@keyframes pulsate {
+  from {
+    transform: scale(1.2);
+  }
+
+  to {
+    transform: scale(1);
+  }
 }
