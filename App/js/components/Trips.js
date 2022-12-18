@@ -9,6 +9,12 @@ class Trips {
     toDate: /^(?:2023)+/,
     country: null,
   };
+  #messages = {
+    title: "Starts with uppercase and max 50 characters long",
+    imageUrl: "Should be valid url link",
+    price: "Should be two to four digits long",
+    description: "Starts with uppercase ...",
+  };
 
   allTrips = [];
 
@@ -73,6 +79,9 @@ class Trips {
       field.classList.add("green");
       field.classList.remove("red");
     }
+  }
+  regexMessage(field) {
+    field.attributes.placeholder.value = `${this.#messages[field.id]}`;
   }
 
   addTrip(obj) {
