@@ -4,21 +4,47 @@
   margin: 0 auto;
   flex-direction: column;
   flex-wrap: wrap;
+  color: var(--white);
 }
-.addTrip label {
+.addTrip [id] {
+  width: 100%;
+}
+
+.addTrip label,
+input {
   display: block;
-  width: 50%;
+  padding: 0.5vw 0;
+  width: 100%;
+  font-size: 1.6vw;
 }
 .addTrip input {
+  padding: 0.5vw;
+}
+.dateWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.dateInput {
+  display: inline-block;
+  width: 48%;
+}
+#country {
+  font-size: 1.6vw;
+  padding: 0.5vw;
+}
+.addTrip button {
+  font-size: 1.6vw;
   width: 50%;
+  margin: 2vw auto;
+  padding: 1.2vw;
 }
 
 .green {
-  border: 2px solid #567d49;
+  border: 5px solid #567d49;
   outline: #567d49;
 }
 
 .red {
-  border: 2px solid #9e3838;
+  border: 5px solid #9e3838;
   outline: #9e3838;
 }
