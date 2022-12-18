@@ -1,15 +1,18 @@
+import Api from "./env.js";
+import NavLinks from "./components/NavLinks.js";
 import Trips from "./components/Trips.js";
 import Trip from "./components/Trip.js";
-import Api from "./env.js";
 
+const displayLinks = document.querySelector(".navLinks");
 const form = document.querySelector(".addTrip");
 const countries = document.getElementById("country");
 const submit = document.querySelector("button");
 const inputFields = document.querySelectorAll(".addTrip [id]");
 
-submitActive(false);
+const navLinks = new NavLinks();
+navLinks.renderLinks(displayLinks);
 
-console.log(countries);
+submitActive(false);
 
 const trips = new Trips(Api);
 
@@ -23,7 +26,6 @@ form.addEventListener("input", (e) => {
   e.preventDefault();
   let arrFields = Array.from(inputFields);
   const isFormValid = formValid(arrFields);
-  console.log(isFormValid);
 
   isFormValid ? submitActive(true) : submitActive(false);
 });
@@ -54,29 +56,6 @@ function formValid(arr) {
 function submitActive(value) {
   !value ? (submit.disabled = true) : (submit.disabled = false);
 }
-
-// submit.addEventListener("click", (e) => {
-//   e.preventDefault();
-//   let fieldValues = [];
-//   inputFields.forEach((field) => {
-//     trips.validField(field);
-//     fieldValues.push(field.value);
-//   });
-//   let arrFields = Array.from(inputFields);
-//   console.log(fieldValues);
-
-//   const formValid = arrFields.some((input) => input.classList.contains("red"))
-//     ? false
-//     : true;
-
-//   const newTrip = new Trip(fieldValues);
-//   formValid
-//     ? (trips.addTrip(newTrip),
-//       inputFields.forEach(
-//         (field) => ((field.value = ""), field.classList.remove("green"))
-//       ))
-//     : inputFields.forEach((field) => console.log(field.classList));
-// });
 
 window.onload = function () {
   trips.getContries(countries);
