@@ -20,13 +20,12 @@ function tripCard(obj) {
   imgLink.href = `./pages/tripOverview.html?id=${obj.id}`;
 
   const descriptionWrapper = createElem("div");
+  descriptionWrapper.classList.add("descriptionWrapper");
   const shortDescrp = createElem("p");
   shortDescrp.classList.add("shortDescrp", "active");
   shortDescrp.textContent = obj.description.substring(0, 30).concat(" ...");
-  console.log(shortDescrp.textContent);
   const fullDescrp = createElem("p");
   fullDescrp.classList.add("fullDescrp");
-  console.log(fullDescrp);
   fullDescrp.textContent = obj.description;
 
   descriptionWrapper.append(shortDescrp, fullDescrp);
@@ -36,7 +35,7 @@ function tripCard(obj) {
   readMore.textContent = "Read more";
 
   const price = createElem("h3");
-  price.classList.add("price");
+  price.classList.add("priceCard");
   price.textContent = obj.price;
 
   const dateWrapper = createElem("div");
@@ -50,6 +49,7 @@ function tripCard(obj) {
   dateWrapper.append(fromDate, toDate);
 
   const country = createElem("h4");
+  country.classList.add("country");
   country.textContent = obj.country;
 
   div.append(
@@ -81,21 +81,24 @@ function fullTripCard(obj) {
 
   const title = createElem("h1");
   title.textContent = obj.title;
-
+  const dateWrapper = createElem("div");
+  dateWrapper.classList.add("dateWrapper");
   const fromDate = createElem("span");
-  fromDate.textContent = reverseDate(obj.fromDate);
+  fromDate.textContent = `From  ${reverseDate(obj.fromDate)}`;
 
   const toDate = createElem("span");
-  toDate.textContent = reverseDate(obj.toDate);
+  toDate.textContent = `To  ${reverseDate(obj.toDate)}`;
+
+  dateWrapper.append(fromDate, toDate);
 
   const description = createElem("h4");
   description.textContent = obj.description;
 
   const price = createElem("h3");
-  price.classList.add("price");
+  price.classList.add("priceCard");
   price.textContent = obj.price;
 
-  textWrapper.append(country, title, fromDate, toDate, description, price);
+  textWrapper.append(country, title, dateWrapper, description, price);
 
   divCard.append(imgWrapper, textWrapper);
 
@@ -104,30 +107,30 @@ function fullTripCard(obj) {
 
 function tableTrips(obj) {
   const createRow = (obj) => {
-    const tr = helper.createElem("tr");
+    const tr = createElem("tr");
 
-    const tdIndex = helper.createElem("td");
+    const tdIndex = createElem("td");
     tdIndex.textContent = obj.id;
 
-    const tdImage = helper.createElem("td");
+    const tdImage = createElem("td");
     tdImage.classList.add("tdImage");
     tdImage.style.backgroundImage = `url("${obj.imageUrl}")`;
 
-    const tdTitle = helper.createElem("td");
+    const tdTitle = createElem("td");
     tdTitle.textContent = obj.title;
 
-    const tdCountry = helper.createElem("td");
+    const tdCountry = createElem("td");
     tdCountry.textContent = obj.country;
 
-    const tdPrice = helper.createElem("td");
+    const tdPrice = createElem("td");
     tdPrice.textContent = obj.price;
     tdPrice.classList.add("price");
 
-    const tdDateFrom = helper.createElem("td");
-    tdDateFrom.textContent = helper.reverseDate(obj.fromDate);
+    const tdDateFrom = createElem("td");
+    tdDateFrom.textContent = reverseDate(obj.fromDate);
 
-    const tdDateTo = helper.createElem("td");
-    tdDateTo.textContent = helper.reverseDate(obj.toDate);
+    const tdDateTo = createElem("td");
+    tdDateTo.textContent = reverseDate(obj.toDate);
 
     tr.append(
       tdIndex,
@@ -142,11 +145,11 @@ function tableTrips(obj) {
   };
 
   const createEditBtn = (id) => {
-    const editTd = helper.createElem("td");
-    const editBtn = helper.createElem("button");
+    const editTd = createElem("td");
+    const editBtn = createElem("button");
 
     editBtn.setAttribute("data-id", id);
-    editBtn.textContent = "Edit";
+    editBtn.classList.add("editBtn");
 
     editTd.appendChild(editBtn);
     return editTd;
@@ -159,8 +162,8 @@ function tableTrips(obj) {
   return tr;
 }
 
-function errorMessage(elem, msg) {
-  // displayTrips.style.display = "none";
+function errorMessage(elem, hideElem, msg) {
+  hideElem.classList.toggle("displayNone");
   const message = document.createElement("div");
   message.classList.add("message");
   message.textContent = msg;
