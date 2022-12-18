@@ -47,8 +47,6 @@ submit.addEventListener("click", (e) => {
   const newTrip = new Trip(fieldValues);
   trips.addTrip(newTrip);
   submitActive(false);
-
-  console.log("trip added");
 });
 
 function formValid(arr) {
