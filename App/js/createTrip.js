@@ -8,6 +8,7 @@ const form = document.querySelector(".addTrip");
 const countries = document.getElementById("country");
 const submit = document.querySelector("button");
 const inputFields = document.querySelectorAll(".addTrip [id]");
+const msgPlaceholder = document.querySelectorAll(".addTrip [placeholder]");
 
 const navLinks = new NavLinks();
 navLinks.renderLinks(displayLinks);
@@ -15,6 +16,10 @@ navLinks.renderLinks(displayLinks);
 submitActive(false);
 
 const trips = new Trips(Api);
+
+msgPlaceholder.forEach((field) =>
+  field.addEventListener("focus", (e) => trips.regexMessage(e.target))
+);
 
 inputFields.forEach((field) =>
   field.addEventListener("input", (e) => {
