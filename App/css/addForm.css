@@ -20,6 +20,9 @@ input {
 .addTrip input {
   padding: 0.5vw;
 }
+#description {
+  font-size: 1.6vw;
+}
 .dateWrapper {
   display: flex;
   justify-content: space-between;
