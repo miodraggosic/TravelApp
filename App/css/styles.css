@@ -13,7 +13,7 @@
 body {
   background-image: url(../assets/images/curvy-narrow-muddy-road-dark-forest-surrounded-by-greenery-little-light-coming-from2x.png);
 
-  background-position: center;
+  background-position: top;
   background-repeat: no-repeat;
 }
 main {
@@ -331,6 +331,10 @@ tr {
 /* media queries */
 
 @media only screen and (max-width: 1200px) {
+  body {
+    background-position: center;
+    background-size: cover;
+  }
   .displayTrips {
     grid-template-columns: repeat(2, auto);
   }
