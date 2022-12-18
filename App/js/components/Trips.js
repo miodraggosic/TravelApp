@@ -92,7 +92,7 @@ class Trips {
       },
       body: JSON.stringify(obj),
     })
-      .then(() => console.log("succes")) //this.renderTrips())
+      .then(() => console.log("succes"))
       .catch((err) => console.log(err));
   }
 
