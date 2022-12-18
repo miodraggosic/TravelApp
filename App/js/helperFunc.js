@@ -70,7 +70,6 @@ function fullTripCard(obj) {
 
   const imgWrapper = createElem("div");
   imgWrapper.classList.add("imgWrapper");
-  console.log(imgWrapper);
   imgWrapper.style.backgroundImage = `url("${obj.imageUrl}")`;
 
   const textWrapper = createElem("div");
@@ -178,6 +177,14 @@ function removeMessage(elem) {
   }, 3000);
 }
 
+function scrollIntoView(elem) {
+  elem.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+    inline: "nearest",
+  });
+}
+
 export {
   createElem,
   reverseDate,
@@ -186,4 +193,5 @@ export {
   tableTrips,
   errorMessage,
   removeMessage,
+  scrollIntoView,
 };
