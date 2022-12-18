@@ -16,31 +16,47 @@ if (!id) {
   const displayTrips = document.querySelector(".displayTrips");
   const section = document.querySelector("section");
   const searchField = document.querySelector("#searchTrips");
+  const arrowBtn = document.querySelector(".arrow");
 
   trips.getTrips(id, displayTrips, helper.tripCard);
 
+  arrowBtn.addEventListener("click", () =>
+    searchField.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+      inline: "nearest",
+    })
+  );
+  //extract
+
   searchField.addEventListener("focus", function (e) {
     displayTrips.classList.add("blur");
+    e.target.attributes.placeholder.value = "Click outside the box to search";
   });
 
   searchField.addEventListener("blur", (e) => {
     const searchTerm = e.target.value.toLowerCase().trim();
-    const tripsToRender = trips.filterTrips(searchTerm);
-    displayTrips.classList.remove("blur");
+    if (searchTerm !== "") {
+      const tripsToRender = trips.filterTrips(searchTerm);
+      displayTrips.classList.remove("blur");
 
-    if (tripsToRender.length > 0) {
-      displayTrips.innerHTML = "";
-      tripsToRender.forEach((trip) =>
-        trips.renderTrip(displayTrips, helper.tripCard, trip)
-      );
-      trips.addReadMore();
+      if (tripsToRender.length > 0) {
+        displayTrips.innerHTML = "";
+        tripsToRender.forEach((trip) =>
+          trips.renderTrip(displayTrips, helper.tripCard, trip)
+        );
+        trips.addReadMore();
+      } else {
+        helper.errorMessage(
+          section,
+          displayTrips,
+          "Desired destination is not available at the moment"
+        );
+        helper.removeMessage(displayTrips);
+      }
     } else {
-      displayTrips.classList.toggle("displayNone");
-      helper.errorMessage(
-        section,
-        "Desired destination is not available at the moment"
-      );
-      helper.removeMessage(displayTrips);
+      displayTrips.classList.remove("blur");
+      e.target.attributes.placeholder.value = "Search the destionation";
     }
   });
 } else {
