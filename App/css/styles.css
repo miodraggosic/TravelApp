@@ -321,9 +321,6 @@ tr {
   animation-direction: alternate;
 }
 
-/* .hover {
-} */
-
 @keyframes pulsate {
   from {
     transform: scale(1.2);
